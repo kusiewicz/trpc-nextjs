@@ -1,7 +1,8 @@
 import { procedure, router } from "../trpc";
+import { userRouter } from "./user.router";
 
 export const appRouter = router({
-  hello: procedure.query(() => "hello world"),
+  user: userRouter,
 });
 
 export type AppRouter = typeof appRouter;
