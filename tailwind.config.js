@@ -2,7 +2,12 @@
 module.exports = {
   content: ["./src/pages/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        Notosans: ["Noto Sans Japanese", "sans-serif"],
+        Lato: ["Lato", "sans-serif"],
+      },
+    },
   },
-  plugins: [],
+  plugins: [require("tailwindcss-debug-screens")],
 };

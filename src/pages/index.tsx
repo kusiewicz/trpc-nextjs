@@ -1,3 +1,7 @@
 export default function Home() {
-  return <h1 className="text-3l font-bold">home dupa</h1>;
+  return (
+    <nav className="flex flex-row items-center justify-center">
+      <h1 className="font-Lato  text-5xl">SmellIT</h1>
+    </nav>
+  );
 }
