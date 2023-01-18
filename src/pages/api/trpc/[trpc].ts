@@ -5,5 +5,5 @@ import { appRouter } from "../../../server/routers/_app.router";
 // TODO: Add onError handler.
 export default trpcNext.createNextApiHandler({
   router: appRouter,
-  createContext: () => createContext,
+  createContext: createContext,
 });
