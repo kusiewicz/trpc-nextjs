@@ -10,7 +10,10 @@ export const FormField = ({
   className?: string;
 }) => (
   <div className={className}>
-    <label htmlFor={field} className="text-xl tracking-wide font-light">
+    <label
+      htmlFor={field}
+      className="text-xl lg:text-2xl tracking-wide font-light"
+    >
       {label}
     </label>
     <input

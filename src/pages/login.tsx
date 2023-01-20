@@ -1,5 +1,5 @@
-import { Login } from "../components/home/auth/login";
+import { Auth } from "../components/home/auth/auth";
 
-const LoginPage = () => <Login />;
+const LoginPage = () => <Auth page="Login" />;
 
 export default LoginPage;
