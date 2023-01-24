@@ -1,33 +1,46 @@
 import Link from "next/link";
 import { FormField } from "./parts/form-field/form-field";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { LoginProps } from "../../../server/prisma/schema/auth.schema";
+import {
+  LoginProps,
+  loginSchema,
+} from "../../../server/prisma/schema/auth.schema";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 export const Login = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<LoginProps>();
+  } = useForm<LoginProps>({
+    resolver: zodResolver(loginSchema),
+  });
 
-  const onSubmit: SubmitHandler<LoginProps> = () => console.log("asdsad");
+  const onSubmit: SubmitHandler<LoginProps> = (data) => console.log(data);
+
+  const { password: passwordError, email: emailError } = errors;
 
   return (
     <>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form
+        className="flex items-center justify-center flex-col"
+        onSubmit={handleSubmit(onSubmit)}
+      >
         <FormField
-          field="username"
-          label="Username"
+          field="E-mail"
+          label="E-mail"
           type="text"
-          className="mb-4 md:flex md:flex-col"
-          {...register("username")}
+          className="mb-4 md:flex md:flex-col items-start max-w-[180px]"
+          {...register("email")}
+          errorMessage={emailError?.message}
         />
         <FormField
           field="password"
           label="Password"
           type="password"
-          className="md:flex md:flex-col"
+          className="md:flex md:flex-col items-start max-w-[180px]"
           {...register("password")}
+          errorMessage={passwordError?.message}
         />
         <button
           type="submit"

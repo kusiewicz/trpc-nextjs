@@ -7,10 +7,10 @@ export const userRouter = router({
   registerUser: procedure
     .input(registerSchema)
     .mutation(async ({ ctx, input }) => {
-      const { email, password, username } = input;
+      const { email, password } = input;
       const isExistingUser = await ctx.prisma.user.findFirst({
         where: {
-          OR: [{ email }, { username }],
+          email: email,
         },
       });
 
@@ -25,7 +25,6 @@ export const userRouter = router({
         data: {
           email: email,
           password: bcrypt.hashSync(password, 10),
-          username: username,
         },
       });
 
